@@ -14,6 +14,15 @@ import {
   Shield,
   Sparkles,
   Github,
+  Headset,
+  Settings,
+  Users,
+  CalendarCheck,
+  FileText,
+  BarChart3,
+  UserCircle,
+  Heart,
+  ShoppingCart,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -115,6 +124,81 @@ const integrations = [
   "SQLite",
 ];
 
+const useCases = [
+  {
+    id: "front-office",
+    icon: Headset,
+    title: "Front Office Assistant",
+    subtitle: "Customer-facing interactions, automated",
+    description:
+      "Let Ubot handle incoming inquiries, appointment bookings, and customer support across WhatsApp and Telegram — so you never miss a lead.",
+    gradient: "from-emerald-500/20 via-green-500/10 to-teal-500/5",
+    glowColor: "oklch(0.6 0.2 160 / 15%)",
+    iconColor: "text-emerald-400",
+    borderAccent: "hover:border-emerald-500/30",
+    bullets: [
+      { icon: MessageCircle, text: "Auto-reply to customer messages 24/7" },
+      { icon: CalendarCheck, text: "Book appointments via natural conversation" },
+      { icon: FileText, text: "Share catalogs, menus, and price lists on demand" },
+      { icon: Users, text: "Route complex queries to the right team member" },
+    ],
+    chat: {
+      userLabel: "Customer via WhatsApp",
+      userMsg: "Hi, I'd like to book a table for 4 this Friday at 8pm",
+      botMsg:
+        "Great choice! I've reserved a table for 4 this Friday at 8:00 PM. 🍽️ You'll receive a confirmation shortly. Would you like to see our weekend specials?",
+    },
+  },
+  {
+    id: "back-office",
+    icon: Settings,
+    title: "Back Office Assistant",
+    subtitle: "Operations and admin on autopilot",
+    description:
+      "Automate repetitive back-office tasks — from email triage and report generation to data entry and file management — all through simple chat commands.",
+    gradient: "from-blue-500/20 via-indigo-500/10 to-violet-500/5",
+    glowColor: "oklch(0.5 0.2 264 / 15%)",
+    iconColor: "text-blue-400",
+    borderAccent: "hover:border-blue-500/30",
+    bullets: [
+      { icon: Mail, text: "Triage and categorize incoming emails" },
+      { icon: BarChart3, text: "Generate daily/weekly reports from your data" },
+      { icon: FolderOpen, text: "Organize and archive files automatically" },
+      { icon: Globe, text: "Scrape competitor pricing and market data" },
+    ],
+    chat: {
+      userLabel: "You via Telegram",
+      userMsg: "Summarize today's unread emails and flag anything urgent",
+      botMsg:
+        "Done! You have 12 unread emails. 🚨 2 flagged as urgent: an overdue invoice from Acme Corp and a contract deadline reminder for Friday. I've moved the rest to categories.",
+    },
+  },
+  {
+    id: "personal-assistant",
+    icon: UserCircle,
+    title: "Personal Assistant",
+    subtitle: "Interact with others on your behalf",
+    description:
+      "Ubot acts as your personal proxy — replying to friends, managing your social obligations, handling shopping lists, and keeping your life organized with your personality.",
+    gradient: "from-violet-500/20 via-purple-500/10 to-pink-500/5",
+    glowColor: "oklch(0.5 0.2 300 / 15%)",
+    iconColor: "text-violet-400",
+    borderAccent: "hover:border-violet-500/30",
+    bullets: [
+      { icon: Heart, text: "Reply to friends and family in your style" },
+      { icon: ShoppingCart, text: "Manage shopping lists and place orders" },
+      { icon: CalendarCheck, text: "RSVP to events and manage your calendar" },
+      { icon: Send, text: "Forward important updates to the right people" },
+    ],
+    chat: {
+      userLabel: "Friend via WhatsApp",
+      userMsg: "Hey! Are you coming to the BBQ on Saturday?",
+      botMsg:
+        "Hey! 👋 Yep, count me in! I'll bring dessert. What time should I be there? Can't wait! 🎉",
+    },
+  },
+];
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
@@ -133,6 +217,12 @@ export default function HomePage() {
               className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
             >
               Features
+            </a>
+            <a
+              href="#use-cases"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
+            >
+              Use Cases
             </a>
             <a
               href="#how-it-works"
@@ -289,6 +379,133 @@ export default function HomePage() {
                   </p>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Separator className="mx-auto max-w-6xl" />
+
+      {/* Use Cases Section */}
+      <section id="use-cases" className="relative py-20 md:py-28">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-emerald-500/5 via-blue-500/3 to-transparent blur-3xl" />
+          <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-violet-500/5 to-transparent blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-6xl px-6">
+          <div className="text-center mb-14">
+            <Badge
+              variant="outline"
+              className="mb-4 px-3 py-1 text-xs tracking-wider uppercase"
+            >
+              Use Cases
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              One Bot,{" "}
+              <span className="gradient-text">Endless Possibilities</span>
+            </h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground text-lg">
+              From handling customers to managing operations to being your
+              personal proxy — Ubot adapts to every role.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {useCases.map((useCase, i) => (
+              <div
+                key={useCase.id}
+                className={`group relative overflow-hidden rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm ${useCase.borderAccent} transition-all duration-500 animate-fade-in-up delay-${(i + 1) * 100}`}
+              >
+                {/* Gradient background on hover */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${useCase.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                />
+
+                <div className="relative p-6 md:p-8 lg:p-10">
+                  <div className="grid lg:grid-cols-2 gap-8 items-center">
+                    {/* Left: Content */}
+                    <div>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div
+                          className={`flex size-12 items-center justify-center rounded-xl bg-secondary/80 ${useCase.iconColor}`}
+                        >
+                          <useCase.icon className="size-6" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold">
+                            {useCase.title}
+                          </h3>
+                          <p className="text-sm text-muted-foreground">
+                            {useCase.subtitle}
+                          </p>
+                        </div>
+                      </div>
+
+                      <p className="text-muted-foreground leading-relaxed mb-6">
+                        {useCase.description}
+                      </p>
+
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        {useCase.bullets.map((bullet) => (
+                          <div
+                            key={bullet.text}
+                            className="flex items-start gap-2.5 p-2.5 rounded-lg bg-secondary/20 group-hover:bg-secondary/30 transition-colors"
+                          >
+                            <bullet.icon className={`size-4 mt-0.5 shrink-0 ${useCase.iconColor}`} />
+                            <span className="text-sm text-muted-foreground">
+                              {bullet.text}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Right: Chat preview */}
+                    <div className="lg:pl-4">
+                      <div
+                        className="glass-card rounded-xl p-5"
+                        style={{
+                          boxShadow: `0 0 30px ${useCase.glowColor}`,
+                        }}
+                      >
+                        <div className="flex items-start gap-3 mb-4">
+                          <div className="flex size-8 items-center justify-center rounded-full bg-green-500/20 shrink-0">
+                            <MessageCircle className="size-4 text-green-400" />
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground mb-1">
+                              {useCase.chat.userLabel}
+                            </p>
+                            <div className="bg-secondary/50 rounded-lg px-3 py-2 inline-block">
+                              <p className="text-sm">
+                                {useCase.chat.userMsg}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div
+                            className={`flex size-8 items-center justify-center rounded-full bg-violet-500/20 shrink-0`}
+                          >
+                            <Bot className="size-4 text-violet-400" />
+                          </div>
+                          <div>
+                            <p className="text-xs text-muted-foreground mb-1">
+                              Ubot
+                            </p>
+                            <div className="bg-secondary/50 rounded-lg px-3 py-2 inline-block">
+                              <p className="text-sm">
+                                {useCase.chat.botMsg}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
