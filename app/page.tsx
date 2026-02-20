@@ -23,6 +23,10 @@ import {
   UserCircle,
   Heart,
   ShoppingCart,
+  Download,
+  Copy,
+  CheckCircle,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -229,6 +233,12 @@ export default function HomePage() {
               className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
             >
               How It Works
+            </a>
+            <a
+              href="#quick-start"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
+            >
+              Quick Start
             </a>
             <Button variant="outline" size="sm" asChild>
               <a
@@ -551,6 +561,149 @@ export default function HomePage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <Separator className="mx-auto max-w-6xl" />
+
+      {/* Quick Start Section */}
+      <section id="quick-start" className="relative py-20 md:py-28">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-green-500/5 via-emerald-500/3 to-cyan-500/5 blur-3xl" />
+        </div>
+
+        <div className="relative mx-auto max-w-6xl px-6">
+          <div className="text-center mb-14">
+            <Badge
+              variant="outline"
+              className="mb-4 px-3 py-1 text-xs tracking-wider uppercase"
+            >
+              <Download className="size-3 mr-1.5" />
+              Installation
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Up and Running in{" "}
+              <span className="gradient-text">Under 5 Minutes</span>
+            </h2>
+            <p className="mx-auto max-w-xl text-muted-foreground text-lg">
+              Clone, build, install, and start — four commands is all it takes.
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-3xl">
+            {/* Terminal window */}
+            <div className="rounded-2xl border border-border/50 bg-card/30 backdrop-blur-sm overflow-hidden">
+              {/* Terminal header */}
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50 bg-secondary/20">
+                <div className="flex gap-1.5">
+                  <div className="size-3 rounded-full bg-red-500/60" />
+                  <div className="size-3 rounded-full bg-yellow-500/60" />
+                  <div className="size-3 rounded-full bg-green-500/60" />
+                </div>
+                <span className="text-xs text-muted-foreground font-mono ml-2">
+                  Terminal
+                </span>
+              </div>
+
+              {/* Terminal body */}
+              <div className="p-6 space-y-6 font-mono text-sm">
+                {/* Step 1 */}
+                <div className="group">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-emerald-400 text-xs font-bold">#1</span>
+                    <span className="text-muted-foreground text-xs">Clone the repository</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-secondary/30 rounded-lg px-4 py-3 group-hover:bg-secondary/50 transition-colors">
+                    <ChevronRight className="size-4 text-emerald-400 shrink-0" />
+                    <code className="text-foreground">
+                      git clone https://github.com/Bigmints-com/ubot.git
+                    </code>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="group">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-emerald-400 text-xs font-bold">#2</span>
+                    <span className="text-muted-foreground text-xs">Install dependencies</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-secondary/30 rounded-lg px-4 py-3 group-hover:bg-secondary/50 transition-colors">
+                    <ChevronRight className="size-4 text-emerald-400 shrink-0" />
+                    <code className="text-foreground">
+                      cd ubot && make deps
+                    </code>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="group">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-emerald-400 text-xs font-bold">#3</span>
+                    <span className="text-muted-foreground text-xs">Build and install</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-secondary/30 rounded-lg px-4 py-3 group-hover:bg-secondary/50 transition-colors">
+                    <ChevronRight className="size-4 text-emerald-400 shrink-0" />
+                    <code className="text-foreground">
+                      make install
+                    </code>
+                  </div>
+                </div>
+
+                {/* Step 4 */}
+                <div className="group">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-emerald-400 text-xs font-bold">#4</span>
+                    <span className="text-muted-foreground text-xs">Launch Ubot</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-secondary/30 rounded-lg px-4 py-3 group-hover:bg-secondary/50 transition-colors">
+                    <ChevronRight className="size-4 text-emerald-400 shrink-0" />
+                    <code className="text-foreground">
+                      ubot start
+                    </code>
+                  </div>
+                </div>
+
+                {/* Success output */}
+                <div className="border-t border-border/30 pt-5">
+                  <div className="flex items-center gap-2 text-emerald-400 mb-3">
+                    <CheckCircle className="size-4" />
+                    <span className="text-xs font-semibold tracking-wide uppercase">Output</span>
+                  </div>
+                  <div className="text-muted-foreground space-y-1">
+                    <p>🤖 Starting Ubot on port 11490 ...</p>
+                    <p>🤖 Ubot is running! (PID 73156)</p>
+                    <p>🤖 Dashboard: <span className="text-emerald-400">http://localhost:11490</span></p>
+                    <p>🤖 Logs: ubot logs</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Info cards below terminal */}
+            <div className="grid sm:grid-cols-3 gap-3 mt-6">
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/20 border border-border/30">
+                <Terminal className="size-4 text-emerald-400 shrink-0" />
+                <div>
+                  <p className="text-xs font-medium">CLI Control</p>
+                  <p className="text-xs text-muted-foreground">start · stop · status · logs</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/20 border border-border/30">
+                <Shield className="size-4 text-blue-400 shrink-0" />
+                <div>
+                  <p className="text-xs font-medium">Config</p>
+                  <p className="text-xs text-muted-foreground">~/.ubot/config.json</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/20 border border-border/30">
+                <Zap className="size-4 text-amber-400 shrink-0" />
+                <div>
+                  <p className="text-xs font-medium">59 Tools</p>
+                  <p className="text-xs text-muted-foreground">7 modules · ready to go</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
