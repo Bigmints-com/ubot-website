@@ -114,16 +114,25 @@ const steps = [
 ];
 
 const integrations = [
+  // Channels
   "WhatsApp",
   "Telegram",
+  // Integrations
   "Gmail",
   "Google Sheets",
   "Google Drive",
+  "Google Calendar",
+  "Google Contacts",
+  "SaveADay",
+  // Capabilities
   "Puppeteer",
   "DuckDuckGo",
+  // LLM Providers
   "OpenAI",
   "Anthropic",
+  "Gemini",
   "Ollama",
+  // Stack
   "Node.js",
   "SQLite",
 ];
@@ -699,8 +708,8 @@ export default function HomePage() {
               <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/20 border border-border/30">
                 <Zap className="size-4 text-amber-400 shrink-0" />
                 <div>
-                  <p className="text-xs font-medium">59 Tools</p>
-                  <p className="text-xs text-muted-foreground">7 modules · ready to go</p>
+                  <p className="text-xs font-medium">120+ Tools</p>
+                  <p className="text-xs text-muted-foreground">9 modules · ready to go</p>
                 </div>
               </div>
             </div>
