@@ -249,6 +249,12 @@ export default function HomePage() {
             >
               Quick Start
             </a>
+            <a
+              href="/docs"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
+            >
+              Docs
+            </a>
             <Button variant="outline" size="sm" asChild>
               <a
                 href="https://github.com/Bigmints-com/ubot"
