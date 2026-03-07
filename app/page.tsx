@@ -27,6 +27,12 @@ import {
   Copy,
   CheckCircle,
   ChevronRight,
+  Lock,
+  Box,
+  Eye,
+  HandMetal,
+  Cpu,
+  Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -41,49 +47,49 @@ import { Separator } from "@/components/ui/separator";
 const features = [
   {
     icon: MessageCircle,
-    title: "WhatsApp & Telegram",
+    title: "Messaging-Native I/O",
     description:
-      "Chat with your AI assistant through the messaging apps you already use. Full multi-turn conversations with context awareness.",
+      "Chat through WhatsApp, Telegram, or iMessage — the apps you already use. Full multi-turn conversations with context awareness across all channels simultaneously.",
     gradient: "from-green-500/20 to-emerald-500/10",
     iconColor: "text-green-400",
   },
   {
-    icon: Globe,
-    title: "Browser Automation",
+    icon: Brain,
+    title: "LLM Orchestrator",
     description:
-      "Control a headless browser to navigate, scrape, and interact with any website. Puppeteer-powered with smart popup dismissal.",
+      "A decision engine powered by native OpenAI-compatible tool calling. Supports OpenAI, Claude, Gemini, and local Ollama — swap providers instantly.",
     gradient: "from-blue-500/20 to-cyan-500/10",
     iconColor: "text-blue-400",
   },
   {
-    icon: Mail,
-    title: "Email Management",
-    description:
-      "Read, compose, forward, and manage Gmail conversations. Full Google Workspace integration with OAuth2 security.",
-    gradient: "from-red-500/20 to-orange-500/10",
-    iconColor: "text-red-400",
-  },
-  {
-    icon: FolderOpen,
-    title: "File Management",
-    description:
-      "Search, read, and send files from your local machine right through chat. Share documents instantly via WhatsApp or Telegram.",
-    gradient: "from-amber-500/20 to-yellow-500/10",
-    iconColor: "text-amber-400",
-  },
-  {
     icon: Puzzle,
-    title: "Extensible Skills",
+    title: "Guided Autonomy via Skills",
     description:
-      "Modular skill framework lets you add new capabilities with ease. Each skill has its own tools, triggers, and AI instructions.",
+      "Two-phase skill matching: fast zero-LLM-cost filters, then LLM condition checks. Predictable automation pipelines with full AI reasoning within each stage.",
     gradient: "from-violet-500/20 to-purple-500/10",
     iconColor: "text-violet-400",
   },
   {
-    icon: Clock,
-    title: "Smart Scheduling",
+    icon: Shield,
+    title: "Runtime Sandbox",
     description:
-      "Schedule tasks with natural language. Set reminders, recurring jobs, and proactive check-ins powered by cron and chrono-node.",
+      "WorkspaceGuard enforces strict filesystem isolation. Recursive path validation prevents traversal attacks. Contextual trust levels restrict visitor access to 11 safe tools.",
+    gradient: "from-red-500/20 to-orange-500/10",
+    iconColor: "text-red-400",
+  },
+  {
+    icon: Layers,
+    title: "107+ Native Tools",
+    description:
+      "Auto-discovered tool modules across 16 categories — messaging, memory, files, scheduler, Google Workspace, web automation, and more. Extend further via MCP servers.",
+    gradient: "from-amber-500/20 to-yellow-500/10",
+    iconColor: "text-amber-400",
+  },
+  {
+    icon: FileText,
+    title: "Markdown-as-Truth",
+    description:
+      "Identity, personas, and skills are human-editable Markdown files. Hot-swap agent behavior by simply dropping an .agent.md file into a folder. Fully auditable and git-trackable.",
     gradient: "from-cyan-500/20 to-teal-500/10",
     iconColor: "text-cyan-400",
   },
@@ -95,21 +101,21 @@ const steps = [
     icon: Terminal,
     title: "Connect",
     description:
-      "Link your WhatsApp or Telegram account. Scan a QR code and you're ready in seconds.",
+      "Link messaging apps. Scan a QR code to be ready in seconds. WhatsApp, Telegram, and iMessage — all at once.",
   },
   {
     step: "02",
     icon: Brain,
     title: "Command",
     description:
-      "Send natural language requests. The LLM brain understands context, intent, and decides which skills to use.",
+      "Natural language requests. The LLM brain understands context and intent, then routes to the right skills and tools.",
   },
   {
     step: "03",
     icon: Zap,
     title: "Automate",
     description:
-      "Watch Ubot take action — browse the web, send emails, manage files, and report back with results.",
+      "Ubot browses the web, sends emails, and manages files, reporting back automatically. All from a single chat.",
   },
 ];
 
@@ -117,6 +123,7 @@ const integrations = [
   // Channels
   "WhatsApp",
   "Telegram",
+  "iMessage",
   // Integrations
   "Gmail",
   "Google Sheets",
@@ -132,28 +139,66 @@ const integrations = [
   "Anthropic",
   "Gemini",
   "Ollama",
+  // Protocol
+  "MCP",
   // Stack
   "Node.js",
+  "TypeScript",
   "SQLite",
+];
+
+const techComparison = [
+  { aspect: "Model", ubot: "Integrated Persistent Runtime", generic: "Library / SDK" },
+  { aspect: "Memory", ubot: "Local-First, Durable SQLite", generic: "Ephemeral / External" },
+  { aspect: "I/O", ubot: "Messaging-Native via WhatsApp/Telegram", generic: "CLI / API" },
+  { aspect: "Security", ubot: "Runtime Sandbox / WorkspaceGuard", generic: "Application-Level" },
+  { aspect: "Logic", ubot: "Guided Autonomy via Skills", generic: "Unpredictable Recursive Loops" },
+];
+
+const privacyFeatures = [
+  {
+    icon: Lock,
+    title: "Local-First Sovereignty",
+    description:
+      "All session logs, memories, and files stay on local SQLite databases and host storage. Zero cloud aggregation.",
+  },
+  {
+    icon: Box,
+    title: "Strict Sandboxing",
+    description:
+      "System access is forcefully confined to authorized workspaces only. Recursive path validation prevents traversal attacks.",
+  },
+  {
+    icon: Eye,
+    title: "Contextual Trust Levels",
+    description:
+      "The Owner has access to 131+ tools. Visitors are strictly limited to a safe-list of just 11 tools.",
+  },
+  {
+    icon: HandMetal,
+    title: "Owner-in-the-Loop",
+    description:
+      "The escalation protocol forces the agent to pause and request manual approval for any high-stakes action.",
+  },
 ];
 
 const useCases = [
   {
     id: "front-office",
     icon: Headset,
-    title: "Front Office Assistant",
-    subtitle: "Customer-facing interactions, automated",
+    title: "Front-Office Assistant",
+    subtitle: "Customer Interface",
     description:
-      "Let Ubot handle incoming inquiries, appointment bookings, and customer support across WhatsApp and Telegram — so you never miss a lead.",
+      "Let Ubot handle incoming inquiries, appointment bookings, and customer support across all messaging channels — so you never miss a lead.",
     gradient: "from-emerald-500/20 via-green-500/10 to-teal-500/5",
     glowColor: "oklch(0.6 0.2 160 / 15%)",
     iconColor: "text-emerald-400",
     borderAccent: "hover:border-emerald-500/30",
     bullets: [
-      { icon: MessageCircle, text: "Auto-reply to customer messages 24/7" },
-      { icon: CalendarCheck, text: "Book appointments via natural conversation" },
-      { icon: FileText, text: "Share catalogs, menus, and price lists on demand" },
-      { icon: Users, text: "Route complex queries to the right team member" },
+      { icon: MessageCircle, text: "Auto-reply to inquiries 24/7" },
+      { icon: CalendarCheck, text: "Book appointments natively in chat" },
+      { icon: FileText, text: "Share catalogs" },
+      { icon: Users, text: "Route complex queries to human teams" },
     ],
     chat: {
       userLabel: "Customer via WhatsApp",
@@ -165,8 +210,8 @@ const useCases = [
   {
     id: "back-office",
     icon: Settings,
-    title: "Back Office Assistant",
-    subtitle: "Operations and admin on autopilot",
+    title: "Back-Office Assistant",
+    subtitle: "Automation Engine",
     description:
       "Automate repetitive back-office tasks — from email triage and report generation to data entry and file management — all through simple chat commands.",
     gradient: "from-blue-500/20 via-indigo-500/10 to-violet-500/5",
@@ -174,10 +219,10 @@ const useCases = [
     iconColor: "text-blue-400",
     borderAccent: "hover:border-blue-500/30",
     bullets: [
-      { icon: Mail, text: "Triage and categorize incoming emails" },
-      { icon: BarChart3, text: "Generate daily/weekly reports from your data" },
-      { icon: FolderOpen, text: "Organize and archive files automatically" },
-      { icon: Globe, text: "Scrape competitor pricing and market data" },
+      { icon: Mail, text: "Triage incoming emails" },
+      { icon: FolderOpen, text: "Organize and archive files locally" },
+      { icon: Globe, text: "Scrape competitor pricing via Puppeteer" },
+      { icon: BarChart3, text: "Generate daily data reports" },
     ],
     chat: {
       userLabel: "You via Telegram",
@@ -189,18 +234,18 @@ const useCases = [
   {
     id: "personal-assistant",
     icon: UserCircle,
-    title: "Personal Assistant",
-    subtitle: "Interact with others on your behalf",
+    title: "Personal Proxy",
+    subtitle: "Digital Secretary",
     description:
-      "Ubot acts as your personal proxy — replying to friends, managing your social obligations, handling shopping lists, and keeping your life organized with your personality.",
+      "Ubot acts as your personal proxy — replying to friends using your exact conversational style, managing social obligations, and keeping your life organized.",
     gradient: "from-violet-500/20 via-purple-500/10 to-pink-500/5",
     glowColor: "oklch(0.5 0.2 300 / 15%)",
     iconColor: "text-violet-400",
     borderAccent: "hover:border-violet-500/30",
     bullets: [
-      { icon: Heart, text: "Reply to friends and family in your style" },
-      { icon: ShoppingCart, text: "Manage shopping lists and place orders" },
-      { icon: CalendarCheck, text: "RSVP to events and manage your calendar" },
+      { icon: CalendarCheck, text: "RSVP to events" },
+      { icon: ShoppingCart, text: "Manage shopping lists" },
+      { icon: Heart, text: "Reply to friends using your exact conversational style" },
       { icon: Send, text: "Forward important updates to the right people" },
     ],
     chat: {
@@ -284,20 +329,20 @@ export default function HomePage() {
               className="mb-6 px-4 py-1.5 text-xs font-medium tracking-wider uppercase"
             >
               <Sparkles className="size-3 mr-1.5" />
-              AI-Powered Automation
+              Open Source · MIT License
             </Badge>
           </div>
 
           <h1 className="animate-fade-in-up delay-100 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-            Your Personal
+            The Agentic Operating System
             <br />
-            <span className="gradient-text">AI Assistant</span>
+            <span className="gradient-text">for Your Digital Life</span>
           </h1>
 
           <p className="animate-fade-in-up delay-200 mx-auto max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
-            Automate your digital life through natural conversations. Connect
-            WhatsApp, Telegram, Gmail, and more — all orchestrated by a
-            powerful LLM brain that thinks, decides, and acts on your behalf.
+            Thinks, decides, and acts on your behalf. Connect WhatsApp,
+            Telegram, Gmail, and 107+ tools — all orchestrated by a
+            local-first LLM brain running on your own hardware.
           </p>
 
           <div className="animate-fade-in-up delay-300 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -373,10 +418,10 @@ export default function HomePage() {
               Capabilities
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              Everything You Need
+              Built for Edge Execution
             </h2>
             <p className="mx-auto max-w-xl text-muted-foreground text-lg">
-              A modular skill framework that grows with you. Each capability is
+              Six composable layers — from Soul to Tools. Each capability is
               a plug-and-play module with its own AI instructions.
             </p>
           </div>
@@ -427,12 +472,12 @@ export default function HomePage() {
               Use Cases
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-              One Bot,{" "}
-              <span className="gradient-text">Endless Possibilities</span>
+              One Agent,{" "}
+              <span className="gradient-text">Endless Market Applications</span>
             </h2>
             <p className="mx-auto max-w-2xl text-muted-foreground text-lg">
-              From handling customers to managing operations to being your
-              personal proxy — Ubot adapts to every role.
+              From handling customers to automating operations to being your
+              digital secretary — Ubot adapts to every role.
             </p>
           </div>
 
@@ -714,8 +759,8 @@ export default function HomePage() {
               <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/20 border border-border/30">
                 <Zap className="size-4 text-amber-400 shrink-0" />
                 <div>
-                  <p className="text-xs font-medium">120+ Tools</p>
-                  <p className="text-xs text-muted-foreground">9 modules · ready to go</p>
+                  <p className="text-xs font-medium">107+ Native Tools</p>
+                  <p className="text-xs text-muted-foreground">16 modules · ~150MB RAM</p>
                 </div>
               </div>
             </div>
@@ -759,69 +804,107 @@ export default function HomePage() {
 
       <Separator className="mx-auto max-w-6xl" />
 
-      {/* Architecture Highlight */}
+      {/* Technical Moat Section */}
       <section className="relative py-20 md:py-28">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="glass-card rounded-2xl p-8 md:p-12">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">
-                  Privacy-First
-                  <br />
-                  <span className="gradient-text">Self-Hosted Agent</span>
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  Ubot runs entirely on your own machine. Your messages,
-                  emails, and files never leave your network. The only external
-                  calls are to the LLM API of your choice — OpenAI, Anthropic,
-                  or even a local Ollama instance.
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" className="gap-1.5">
-                    <Shield className="size-3" />
-                    Local-First
-                  </Badge>
-                  <Badge variant="outline" className="gap-1.5">
-                    <Terminal className="size-3" />
-                    Node.js Runtime
-                  </Badge>
-                  <Badge variant="outline" className="gap-1.5">
-                    <Brain className="size-3" />
-                    Multi-LLM Support
-                  </Badge>
-                </div>
+          <div className="text-center mb-14">
+            <Badge
+              variant="outline"
+              className="mb-4 px-3 py-1 text-xs tracking-wider uppercase"
+            >
+              <Cpu className="size-3 mr-1.5" />
+              Architecture
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              The Technical Moat:{" "}
+              <span className="gradient-text">Built for Edge Execution</span>
+            </h2>
+            <p className="mx-auto max-w-xl text-muted-foreground text-lg">
+              Not a library. Not an SDK. An integrated persistent runtime
+              optimized for local hardware.
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-3xl">
+            <div className="glass-card rounded-2xl overflow-hidden">
+              {/* Table header */}
+              <div className="grid grid-cols-3 gap-0 bg-secondary/40 border-b border-border/50">
+                <div className="p-4 text-sm font-medium text-muted-foreground">Architecture</div>
+                <div className="p-4 text-sm font-bold text-center bg-primary/10">Ubot</div>
+                <div className="p-4 text-sm font-medium text-muted-foreground text-center">Generic Frameworks</div>
               </div>
-              <div className="space-y-3">
-                {[
-                  {
-                    label: "Data Storage",
-                    value: "Local SQLite — no cloud dependency",
-                  },
-                  {
-                    label: "LLM Provider",
-                    value: "Swap between OpenAI, Claude, or Ollama",
-                  },
-                  {
-                    label: "Skills Engine",
-                    value: "Modular TypeScript framework",
-                  },
-                  {
-                    label: "Safety",
-                    value: "Owner approval for sensitive actions",
-                  },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex justify-between items-center p-3 rounded-lg bg-secondary/30"
-                  >
-                    <span className="text-sm font-medium">{item.label}</span>
-                    <span className="text-sm text-muted-foreground text-right">
-                      {item.value}
-                    </span>
+              {/* Table rows */}
+              {techComparison.map((row) => (
+                <div
+                  key={row.aspect}
+                  className="grid grid-cols-3 gap-0 border-b border-border/30 last:border-b-0 hover:bg-secondary/10 transition-colors"
+                >
+                  <div className="p-4 text-sm font-medium">{row.aspect}</div>
+                  <div className="p-4 text-sm font-semibold text-center bg-primary/5">
+                    {row.ubot}
                   </div>
-                ))}
-              </div>
+                  <div className="p-4 text-sm text-muted-foreground text-center">
+                    {row.generic}
+                  </div>
+                </div>
+              ))}
             </div>
+
+            <div className="mt-6 text-center">
+              <Badge variant="secondary" className="px-6 py-2 text-sm">
+                <Zap className="size-3.5 mr-2" />
+                Optimized for Edge Execution · Idles at ~150MB RAM
+              </Badge>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Separator className="mx-auto max-w-6xl" />
+
+      {/* Privacy & Trust Section */}
+      <section className="relative py-20 md:py-28">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-green-500/5 to-transparent blur-3xl" />
+        </div>
+        <div className="relative mx-auto max-w-6xl px-6">
+          <div className="text-center mb-14">
+            <Badge
+              variant="outline"
+              className="mb-4 px-3 py-1 text-xs tracking-wider uppercase"
+            >
+              <Shield className="size-3 mr-1.5" />
+              Security
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+              Enterprise-Grade{" "}
+              <span className="gradient-text">Privacy and Trust</span>
+            </h2>
+            <p className="mx-auto max-w-xl text-muted-foreground text-lg">
+              Your data never leaves your machine. The only external calls are
+              to the LLM API of your choice.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {privacyFeatures.map((feature) => (
+              <Card
+                key={feature.title}
+                className="group relative overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300 hover:-translate-y-1"
+              >
+                <CardHeader className="relative pb-3">
+                  <div className="flex size-11 items-center justify-center rounded-lg bg-secondary/80 mb-3 text-emerald-400">
+                    <feature.icon className="size-5" />
+                  </div>
+                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="relative">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -833,11 +916,13 @@ export default function HomePage() {
         </div>
         <div className="relative mx-auto max-w-6xl px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-            Ready to Automate?
+            The Future of Agentic Intelligence is{" "}
+            <span className="gradient-text">Local</span>
           </h2>
           <p className="mx-auto max-w-lg text-muted-foreground text-lg mb-8">
-            Get Ubot running in minutes. Clone the repo, configure your LLM
-            provider, scan a QR code, and start commanding your digital life.
+            Absolute privacy on your own hardware. Predictable autonomy via
+            the multi-stage Skill Engine. Extensible via 107+ tools, MCP, and
+            custom personas.
           </p>
           <Button size="lg" className="px-8 text-base" asChild>
             <a
