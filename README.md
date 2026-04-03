@@ -1,34 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ubot Website
 
-## Getting Started
+The official marketing and documentation website for [Ubot](https://github.com/Bigmints-com/ubot) — the agentic operating system for local personal automation.
 
-First, run the development server:
+Built with **Next.js 15**, **React 19**, and **Tailwind CSS v4**.
+
+## Features
+
+- **Premium Modern Design**: Vibrant aesthetics, glassmorphism, and responsive layouts.
+- **Local-First Focus**: Highlights Ubot's unique technical moat: running LLMs on your own hardware.
+- **Interactive Guides**: Comprehensive onboarding and setup tutorials.
+- **Dark Mode Native**: Optimized for professional, agentic styling from day one.
+
+## Development
+
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the results.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-## Learn More
+The website is designed to be exported as a static site and deployed to **GitHub Pages** (under `ubot.bigmints.com`).
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The output will be in the `/out` directory.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This website and Ubot are distributed under the **MIT License**.

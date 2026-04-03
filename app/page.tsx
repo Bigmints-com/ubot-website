@@ -6,7 +6,6 @@ import {
   Mail,
   FolderOpen,
   Puzzle,
-  Clock,
   Zap,
   ArrowRight,
   Terminal,
@@ -24,7 +23,6 @@ import {
   Heart,
   ShoppingCart,
   Download,
-  Copy,
   CheckCircle,
   ChevronRight,
   Lock,
@@ -34,6 +32,7 @@ import {
   Cpu,
   Layers,
 } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -294,12 +293,12 @@ export default function HomePage() {
             >
               Quick Start
             </a>
-            <a
+            <Link
               href="/docs"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
             >
               Docs
-            </a>
+            </Link>
             <Button variant="outline" size="sm" asChild>
               <a
                 href="https://github.com/Bigmints-com/ubot"
